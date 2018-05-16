@@ -9,6 +9,7 @@ import (
 func Execute(cmd *exec.Cmd, ctx context.Context) []byte {
 	var out []byte
 	stdout, _ := cmd.StdoutPipe()
+	cmd.Stderr = cmd.Stdout
 	cmdDone := make(chan bool)
 	cmdStart := make(chan bool)
 
